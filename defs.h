@@ -1,54 +1,54 @@
-#pragma once
-#define Tident 1 //Идентификатор.
+п»ї#pragma once
+#define Tident 1 //РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ.
 
-#define TconstInt10 10 //Целое число 10 с/с.
-#define TconstInt2 11 //Целое число 2 с/с.
-#define TconstInt8 12 //Целое число 8 с/с.
-#define TconstInt16 13 //Целое число 16 с/с.
-#define TconstChar 14 //Символьная константа.
+#define TconstInt10 10 //Р¦РµР»РѕРµ С‡РёСЃР»Рѕ 10 СЃ/СЃ.
+#define TconstInt2 11 //Р¦РµР»РѕРµ С‡РёСЃР»Рѕ 2 СЃ/СЃ.
+#define TconstInt8 12 //Р¦РµР»РѕРµ С‡РёСЃР»Рѕ 8 СЃ/СЃ.
+#define TconstInt16 13 //Р¦РµР»РѕРµ С‡РёСЃР»Рѕ 16 СЃ/СЃ.
+#define TconstChar 14 //РЎРёРјРІРѕР»СЊРЅР°СЏ РєРѕРЅСЃС‚Р°РЅС‚Р°.
 
-#define Tint 20 //лексема int
-#define Tshort 21 //лексема short
-#define Tlong 22 //лексема long
-#define Tboolean 23 //лексема boolean
-#define Tpublic 24 //лексема public
-#define Tclass 25 //лексема class
-#define TMain 26 //лексема Main
-#define Tstatic 27 //лексема static
-#define Tvoid 28 //лексема void
-#define Tmain 29 //лексема main
-#define Tnew 30 //лексема new
-#define Tswitch 31 //лексема switch
-#define Tcase 32 //лексема case
-#define Tdefault 33 //лексема default
-#define Tbreak 34 //лексема break
-#define Ttrue 35 //лексема true
-#define Tfalse 36 //лексема false
+#define Tint 20 //Р»РµРєСЃРµРјР° int
+#define Tshort 21 //Р»РµРєСЃРµРјР° short
+#define Tlong 22 //Р»РµРєСЃРµРјР° long
+#define Tboolean 23 //Р»РµРєСЃРµРјР° boolean
+#define Tpublic 24 //Р»РµРєСЃРµРјР° public
+#define Tclass 25 //Р»РµРєСЃРµРјР° class
+#define TMain 26 //Р»РµРєСЃРµРјР° Main
+#define Tstatic 27 //Р»РµРєСЃРµРјР° static
+#define Tvoid 28 //Р»РµРєСЃРµРјР° void
+#define Tmain 29 //Р»РµРєСЃРµРјР° main
+#define Tnew 30 //Р»РµРєСЃРµРјР° new
+#define Tswitch 31 //Р»РµРєСЃРµРјР° switch
+#define Tcase 32 //Р»РµРєСЃРµРјР° case
+#define Tdefault 33 //Р»РµРєСЃРµРјР° default
+#define Tbreak 34 //Р»РµРєСЃРµРјР° break
+#define Ttrue 35 //Р»РµРєСЃРµРјР° true
+#define Tfalse 36 //Р»РµРєСЃРµРјР° false
 
-#define Teval 40 //лексема =
-#define Teq 41 //лексема ==
-#define Tuneq 42 //лексема !=
-#define Tmore 43 //лексема >
-#define TmoreOrEq 44 //лексема >=
-#define Tless 45 //лексема <
-#define TlessOrEq 46 //лексема <=
-#define Tplus 47 //лексема +
-#define Tminus 48 //лексема -
-#define Tmul 49 //лексема *
-#define Tdiv 50 //лексема /
-#define Tremain 51 //лексема %
-#define Tincrement 52 //лексема ++
-#define Tdecrement 53 //лексема --
+#define Teval 40 //Р»РµРєСЃРµРјР° =
+#define Teq 41 //Р»РµРєСЃРµРјР° ==
+#define Tuneq 42 //Р»РµРєСЃРµРјР° !=
+#define Tmore 43 //Р»РµРєСЃРµРјР° >
+#define TmoreOrEq 44 //Р»РµРєСЃРµРјР° >=
+#define Tless 45 //Р»РµРєСЃРµРјР° <
+#define TlessOrEq 46 //Р»РµРєСЃРµРјР° <=
+#define Tplus 47 //Р»РµРєСЃРµРјР° +
+#define Tminus 48 //Р»РµРєСЃРµРјР° -
+#define Tmul 49 //Р»РµРєСЃРµРјР° *
+#define Tdiv 50 //Р»РµРєСЃРµРјР° /
+#define Tremain 51 //Р»РµРєСЃРµРјР° %
+#define Tincrement 52 //Р»РµРєСЃРµРјР° ++
+#define Tdecrement 53 //Р»РµРєСЃРµРјР° --
 
-#define Tcomma 70 //лексема ,
-#define Tsemi 71 //лексема ;
-#define TopenBracket 72 //лексема (
-#define TcloseBracket 73 //лексема )
-#define TopenBrace 74 //лексема {
-#define TcloseBrace 75 //лексема }
-#define TopenSquareBracket 76 //лексема [
-#define TcloseSquareBracket 77 //лексема ]
-#define Tcolon 78 //лексема :
+#define Tcomma 70 //Р»РµРєСЃРµРјР° ,
+#define Tsemi 71 //Р»РµРєСЃРµРјР° ;
+#define TopenBracket 72 //Р»РµРєСЃРµРјР° (
+#define TcloseBracket 73 //Р»РµРєСЃРµРјР° )
+#define TopenBrace 74 //Р»РµРєСЃРµРјР° {
+#define TcloseBrace 75 //Р»РµРєСЃРµРјР° }
+#define TopenSquareBracket 76 //Р»РµРєСЃРµРјР° [
+#define TcloseSquareBracket 77 //Р»РµРєСЃРµРјР° ]
+#define Tcolon 78 //Р»РµРєСЃРµРјР° :
 
-#define Terror 999 //Ошибочный символ
-#define Tend 1000 //Конец модуля
+#define Terror 999 //РћС€РёР±РѕС‡РЅС‹Р№ СЃРёРјРІРѕР»
+#define Tend 1000 //РљРѕРЅРµС† РјРѕРґСѓР»СЏ

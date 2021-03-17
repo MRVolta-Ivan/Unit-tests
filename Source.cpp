@@ -1,4 +1,4 @@
-#include "Diagram.h"
+﻿#include "Diagram.h"
 #include <Windows.h>
 #include <gtest/gtest.h>
 

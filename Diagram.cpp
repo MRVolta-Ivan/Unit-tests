@@ -1,4 +1,4 @@
-#include "Diagram.h"
+п»ї#include "Diagram.h"
 
 Diagram::Diagram(Scaner *s, Tree* _tree)
 {
@@ -10,28 +10,28 @@ Diagram::~Diagram()
 {
 }
 
-void Diagram::Program() //Программа.
+void Diagram::Program() //РџСЂРѕРіСЂР°РјРјР°.
 {
 	int type;
 	string lexem = "";
 	type = sc->Scan(lexem);
 	if (type != Tpublic)
-		PrintError("Ожидалось public.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»РѕСЃСЊ public.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	type = sc->Scan(lexem);
 	if (type != Tclass)
-		PrintError("Ожидалось class.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»РѕСЃСЊ class.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	type = sc->Scan(lexem);
 	if (type != TMain)
-		PrintError("Ожидалось Main.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»РѕСЃСЊ Main.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	type = sc->Scan(lexem);
 	if (type != TopenBrace)
-		PrintError("Ожидался символ {.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» {.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	int uk = sc->GetUK();
 	int line = sc->GetLine();
 	type = sc->Scan(lexem);
 	sc->PutLine(line);
 	sc->PutUK(uk);
-	//Одно описание. Мы попадаем на одно описание, если следующее int, short, long, boolean.
+	//РћРґРЅРѕ РѕРїРёСЃР°РЅРёРµ. РњС‹ РїРѕРїР°РґР°РµРј РЅР° РѕРґРЅРѕ РѕРїРёСЃР°РЅРёРµ, РµСЃР»Рё СЃР»РµРґСѓСЋС‰РµРµ int, short, long, boolean.
 	while (type >= Tint && type <= Tboolean)
 	{
 		OneDescription(true);
@@ -44,54 +44,54 @@ void Diagram::Program() //Программа.
 	Function();
 	type = sc->Scan(lexem);
 	if (type != TcloseBrace)
-		PrintError("Ожидался символ }.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» }.", sc->GetLine() + 1, sc->GetUKfromStartString());
 }
 
-void Diagram::Function() //Функция.
+void Diagram::Function() //Р¤СѓРЅРєС†РёСЏ.
 {
 	int type;
 	string lexem = "";
 	type = sc->Scan(lexem);
 	if (type != Tpublic)
-		PrintError("Ожидалось public.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»РѕСЃСЊ public.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	type = sc->Scan(lexem);
 	if (type != Tstatic)
-		PrintError("Ожидалось static.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»РѕСЃСЊ static.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	type = sc->Scan(lexem);
 	if (type != Tvoid)
-		PrintError("Ожидалось void.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»РѕСЃСЊ void.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	type = sc->Scan(lexem);
 	if (type != Tmain)
-		PrintError("Ожидалось main.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»РѕСЃСЊ main.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	type = sc->Scan(lexem);
 	if (type != TopenBracket)
-		PrintError("Ожидался символ (.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» (.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	type = sc->Scan(lexem);
 	if (type != TcloseBracket)
-		PrintError("Ожидался символ ).", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» ).", sc->GetLine() + 1, sc->GetUKfromStartString());
 	CompoundOperator();
 }
 
-void Diagram::CompoundOperator() //Составной оператор.
+void Diagram::CompoundOperator() //РЎРѕСЃС‚Р°РІРЅРѕР№ РѕРїРµСЂР°С‚РѕСЂ.
 {
 	int type;
 	string lexem = "";
 	type = sc->Scan(lexem);
 	if (type != TopenBrace)
-		PrintError("Ожидался символ {.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» {.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	
 	Tree* save = root->GetCur();
 
-	root->SemInclude(); //Создаём пустую вершину справа от текущего узла. 
+	root->SemInclude(); //РЎРѕР·РґР°С‘Рј РїСѓСЃС‚СѓСЋ РІРµСЂС€РёРЅСѓ СЃРїСЂР°РІР° РѕС‚ С‚РµРєСѓС‰РµРіРѕ СѓР·Р»Р°. 
 	
 	int uk = sc->GetUK();
 	int line = sc->GetLine();
 	type = sc->Scan(lexem);
 	sc->PutUK(uk);
 	sc->PutLine(line);
-	//Одно описание или Оператор.
+	//РћРґРЅРѕ РѕРїРёСЃР°РЅРёРµ РёР»Рё РћРїРµСЂР°С‚РѕСЂ.
 
-	cout << "Данные перед входом в блок:" << endl;
+	cout << "Р”Р°РЅРЅС‹Рµ РїРµСЂРµРґ РІС…РѕРґРѕРј РІ Р±Р»РѕРє:" << endl;
 	root->GetCur()->PrintDetail();
 	cout << endl << endl;
 
@@ -111,9 +111,9 @@ void Diagram::CompoundOperator() //Составной оператор.
 
 	type = sc->Scan(lexem);
 	if (type != TcloseBrace)
-		PrintError("Ожидался символ }.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» }.", sc->GetLine() + 1, sc->GetUKfromStartString());
 
-	cout << "Данные после выхода из блока:" << endl;
+	cout << "Р”Р°РЅРЅС‹Рµ РїРѕСЃР»Рµ РІС‹С…РѕРґР° РёР· Р±Р»РѕРєР°:" << endl;
 	root->GetCur()->PrintDetail();
 	cout << endl << endl;
 
@@ -121,14 +121,14 @@ void Diagram::CompoundOperator() //Составной оператор.
 
 }
 
-void Diagram::OneDescription(bool field) //Одно описание.
+void Diagram::OneDescription(bool field) //РћРґРЅРѕ РѕРїРёСЃР°РЅРёРµ.
 {
 	int type;
 	string lexem = "";
 
 	type = TypeData();
 
-	int typeVar = type; //Запоминаем тип переменных.
+	int typeVar = type; //Р—Р°РїРѕРјРёРЅР°РµРј С‚РёРї РїРµСЂРµРјРµРЅРЅС‹С….
 
 	do
 	{
@@ -136,28 +136,28 @@ void Diagram::OneDescription(bool field) //Одно описание.
 		type = sc->Scan(lexem);
 	} while (type == Tcomma);
 	if (type != Tsemi)
-		PrintError("Ожидался символ ;.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» ;.", sc->GetLine() + 1, sc->GetUKfromStartString());
 }
 
-int Diagram::TypeData() //Тип данных.
+int Diagram::TypeData() //РўРёРї РґР°РЅРЅС‹С….
 {
 	int type;
 	string lexem = "";
 	type = sc->Scan(lexem);
 	if (!(type >= Tint && type <= Tboolean))
-		PrintError("Ожидался тип данных: int, short, long, boolean.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ С‚РёРї РґР°РЅРЅС‹С…: int, short, long, boolean.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	return type;
 }
 
-void Diagram::Variable(int typeData, bool field) //Переменная.
+void Diagram::Variable(int typeData, bool field) //РџРµСЂРµРјРµРЅРЅР°СЏ.
 {
 	int type;
 	string lexem = "";
 	type = sc->Scan(lexem);
 	if (type != Tident)
-		PrintError("Ожидался идентификатор.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ.", sc->GetLine() + 1, sc->GetUKfromStartString());
 
-	string nameIdent = lexem; //Запоминаем имя переменной.
+	string nameIdent = lexem; //Р—Р°РїРѕРјРёРЅР°РµРј РёРјСЏ РїРµСЂРµРјРµРЅРЅРѕР№.
 
 	int uk = sc->GetUK();
 	int line = sc->GetLine();
@@ -169,28 +169,28 @@ void Diagram::Variable(int typeData, bool field) //Переменная.
 	else
 		value.dataAsBoolean = false;
 
-	//Заносим переменную в дерево.
+	//Р—Р°РЅРѕСЃРёРј РїРµСЂРµРјРµРЅРЅСѓСЋ РІ РґРµСЂРµРІРѕ.
 	root->SemInclude(nameIdent, typeData, value, field, false, 0, {});
 
-	//Инициализация переменной.
+	//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРµСЂРµРјРµРЅРЅРѕР№.
 	if (type == Teval)
 	{
 		Node* node = Expression();
 
-		root->SetInit(node); //устанавливаем признак инициализации.
+		root->SetInit(node); //СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїСЂРёР·РЅР°Рє РёРЅРёС†РёР°Р»РёР·Р°С†РёРё.
 		
-		cout << "Инициализация:" << endl;
+		cout << "РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ:" << endl;
 		root->GetCur()->PrintDetail();
 		cout << endl << endl;
 	}
-	//Создание массива.
+	//РЎРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР°.
 	else if (type == TopenSquareBracket)
 	{
-		int countDim = 1; //Начинаем считать количество измерений у массива.
+		int countDim = 1; //РќР°С‡РёРЅР°РµРј СЃС‡РёС‚Р°С‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РёР·РјРµСЂРµРЅРёР№ Сѓ РјР°СЃСЃРёРІР°.
 
 		type = sc->Scan(lexem);
 		if (type != TcloseSquareBracket)
-			PrintError("Ожидался символ ].", sc->GetLine() + 1, sc->GetUKfromStartString());
+			PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» ].", sc->GetLine() + 1, sc->GetUKfromStartString());
 		type = sc->Scan(lexem);
 		while (type == TopenSquareBracket)
 		{
@@ -198,17 +198,17 @@ void Diagram::Variable(int typeData, bool field) //Переменная.
 
 			type = sc->Scan(lexem);
 			if (type != TcloseSquareBracket)
-				PrintError("Ожидался символ ].", sc->GetLine() + 1, sc->GetUKfromStartString());
+				PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» ].", sc->GetLine() + 1, sc->GetUKfromStartString());
 			type = sc->Scan(lexem);
 		}
 
-		root->SetNumDimension(countDim); //Устанавливаем кол-во измерений.
+		root->SetNumDimension(countDim); //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєРѕР»-РІРѕ РёР·РјРµСЂРµРЅРёР№.
 
 		if (type != Teval)
-			PrintError("Ожидался символ =.", sc->GetLine() + 1, sc->GetUKfromStartString());
+			PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» =.", sc->GetLine() + 1, sc->GetUKfromStartString());
 		type = sc->Scan(lexem);
 		if (type != Tnew)
-			PrintError("Ожидалось new.", sc->GetLine() + 1, sc->GetUKfromStartString());
+			PrintError("РћР¶РёРґР°Р»РѕСЃСЊ new.", sc->GetLine() + 1, sc->GetUKfromStartString());
 		type = TypeData();
 
 		Node* node = new Node();
@@ -219,7 +219,7 @@ void Diagram::Variable(int typeData, bool field) //Переменная.
 
 		vector<int> dim = ArraySize();
 
-		//Устанавливаем начало массива.
+		//РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅР°С‡Р°Р»Рѕ РјР°СЃСЃРёРІР°.
 		int allSize = 1;
 		for (int i = 0; i < dim.size(); i++)
 		{
@@ -241,10 +241,10 @@ void Diagram::Variable(int typeData, bool field) //Переменная.
 			node->value.addrAsBoolean = arr;
 		}
 
-		root->SetDimension(dim); //Устанавливаем сами измерения.
+		root->SetDimension(dim); //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃР°РјРё РёР·РјРµСЂРµРЅРёСЏ.
 		root->SetInit(node);
 
-		cout << "Инициализация массива:" << endl;
+		cout << "РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РјР°СЃСЃРёРІР°:" << endl;
 		root->GetCur()->PrintDetail();
 		cout << endl << endl;
 	}
@@ -255,7 +255,7 @@ void Diagram::Variable(int typeData, bool field) //Переменная.
 	}
 }
 
-vector<int> Diagram::ArraySize() //Размер массива.
+vector<int> Diagram::ArraySize() //Р Р°Р·РјРµСЂ РјР°СЃСЃРёРІР°.
 {
 	int type;
 	string lexem = "";
@@ -267,14 +267,14 @@ vector<int> Diagram::ArraySize() //Размер массива.
 	{
 		type = sc->Scan(lexem);
 		if (type != TopenSquareBracket)
-			PrintError("Ожидался символ [.", sc->GetLine() + 1, sc->GetUKfromStartString());
+			PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» [.", sc->GetLine() + 1, sc->GetUKfromStartString());
 		
 		dim.push_back(Constant());
 		
 		
 		type = sc->Scan(lexem);
 		if (type != TcloseSquareBracket)
-			PrintError("Ожидался символ ].", sc->GetLine() + 1, sc->GetUKfromStartString());
+			PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» ].", sc->GetLine() + 1, sc->GetUKfromStartString());
 		uk = sc->GetUK();
 		line = sc->GetLine();
 		type = sc->Scan(lexem);
@@ -286,14 +286,14 @@ vector<int> Diagram::ArraySize() //Размер массива.
 	return dim; //
 }
 
-void Diagram::Operator() //Оператор.
+void Diagram::Operator() //РћРїРµСЂР°С‚РѕСЂ.
 {
 	int type;
 	string lexem = "";
 	int uk = sc->GetUK();
 	int line = sc->GetLine();
 	type = sc->Scan(lexem);
-	//Присваивание.
+	//РџСЂРёСЃРІР°РёРІР°РЅРёРµ.
 	if (type == Tident)
 	{
 		sc->PutUK(uk);
@@ -301,14 +301,14 @@ void Diagram::Operator() //Оператор.
 		Assignment();
 		type = sc->Scan(lexem);
 		if (type != Tsemi)
-			PrintError("Ожидался символ ;.", sc->GetLine() + 1, sc->GetUKfromStartString());
+			PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» ;.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	}
-	//Оператор break.
+	//РћРїРµСЂР°С‚РѕСЂ break.
 	else if (type == Tbreak)
 	{
 		type = sc->Scan(lexem);
 		if (type != Tsemi)
-			PrintError("Ожидался символ ;.", sc->GetLine() + 1, sc->GetUKfromStartString());
+			PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» ;.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	}
 	//Switch.
 	else if (type == Tswitch)
@@ -317,20 +317,20 @@ void Diagram::Operator() //Оператор.
 		sc->PutLine(line);
 		Switch();
 	}
-	//Составной оператор.
+	//РЎРѕСЃС‚Р°РІРЅРѕР№ РѕРїРµСЂР°С‚РѕСЂ.
 	else if (type == TopenBrace)
 	{
 		sc->PutUK(uk);
 		sc->PutLine(line);
 		CompoundOperator();
 	}
-	//Проверяем пустой оператор.
+	//РџСЂРѕРІРµСЂСЏРµРј РїСѓСЃС‚РѕР№ РѕРїРµСЂР°С‚РѕСЂ.
 	else if (type != Tsemi)
-		PrintError("Ожидался символ ;.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» ;.", sc->GetLine() + 1, sc->GetUKfromStartString());
 
 }
 
-void Diagram::Assignment() //Присваивание.
+void Diagram::Assignment() //РџСЂРёСЃРІР°РёРІР°РЅРёРµ.
 {
 	int type;
 	string lexem = "";
@@ -338,7 +338,7 @@ void Diagram::Assignment() //Присваивание.
 	Node* nodename = Name();
 	type = sc->Scan(lexem);
 	if (type != Teval)
-		PrintError("Ожидался символ =.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» =.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	
 	Node* original;
 
@@ -347,7 +347,7 @@ void Diagram::Assignment() //Присваивание.
 	Node* node = Expression();
 
 	if (original->type != node->type)
-		root->PrintError("Не соответствие типов",nodename->lexem);
+		root->PrintError("РќРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ С‚РёРїРѕРІ",nodename->lexem);
 
 	if (original->numberDimension == 0)
 		original->value = node->value;
@@ -359,7 +359,7 @@ void Diagram::Assignment() //Присваивание.
 			*(nodename->value.addrAsBoolean) = node->value.dataAsBoolean;
 	}
 
-	cout << "Присваивание:" << endl;
+	cout << "РџСЂРёСЃРІР°РёРІР°РЅРёРµ:" << endl;
 	root->GetCur()->PrintDetail();
 	cout << endl << endl;
 }
@@ -370,23 +370,23 @@ void Diagram::Switch() //Switch.
 	string lexem = "";
 	type = sc->Scan(lexem);
 	if (type != Tswitch)
-		PrintError("Ожидалось switch.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»РѕСЃСЊ switch.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	type = sc->Scan(lexem);
 	if (type != TopenBracket)
-		PrintError("Ожидался символ (.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» (.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	
 	Node* node = Expression();
 
 	type = sc->Scan(lexem);
 	if (type != TcloseBracket)
-		PrintError("Ожидался символ ).", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» ).", sc->GetLine() + 1, sc->GetUKfromStartString());
 	type = sc->Scan(lexem);
 	if (type != TopenBrace)
-		PrintError("Ожидался символ {.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» {.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	Case();
 	type = sc->Scan(lexem);
 	if (type != TcloseBrace)
-		PrintError("Ожидался символ }.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» }.", sc->GetLine() + 1, sc->GetUKfromStartString());
 }
 
 void Diagram::Case() //Case.
@@ -396,13 +396,13 @@ void Diagram::Case() //Case.
 	int uk = sc->GetUK();
 	int line = sc->GetLine();
 	type = sc->Scan(lexem);
-	//Несколько Case.
+	//РќРµСЃРєРѕР»СЊРєРѕ Case.
 	while (type == Tcase)
 	{
 		Constant();
 		type = sc->Scan(lexem);
 		if (type != Tcolon)
-			PrintError("Ожидался символ :.", sc->GetLine() + 1, sc->GetUKfromStartString());
+			PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» :.", sc->GetLine() + 1, sc->GetUKfromStartString());
 		MultipleOperators();
 		uk = sc->GetUK();
 		line = sc->GetLine();
@@ -414,20 +414,20 @@ void Diagram::Case() //Case.
 	{
 		type = sc->Scan(lexem);
 		if (type != Tcolon)
-			PrintError("Ожидался символ :.", sc->GetLine() + 1, sc->GetUKfromStartString());
+			PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» :.", sc->GetLine() + 1, sc->GetUKfromStartString());
 		MultipleOperators();
 	}
-	//Без default.
+	//Р‘РµР· default.
 	else if (type == TcloseBrace)
 	{
 		sc->PutUK(uk);
 		sc->PutLine(line);
 	}
 	else
-		PrintError("Ожидалось case или default.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»РѕСЃСЊ case РёР»Рё default.", sc->GetLine() + 1, sc->GetUKfromStartString());
 }
 
-void Diagram::MultipleOperators() //Несколько операторов.
+void Diagram::MultipleOperators() //РќРµСЃРєРѕР»СЊРєРѕ РѕРїРµСЂР°С‚РѕСЂРѕРІ.
 {
 	int type;
 	string lexem = "";
@@ -449,40 +449,40 @@ void Diagram::MultipleOperators() //Несколько операторов.
 	}
 }
 
-Node* Diagram::Name() //Имя.
+Node* Diagram::Name() //РРјСЏ.
 {
 	int type;
 	string lexem = "";
 	type = sc->Scan(lexem);
 	if (type != Tident)
-		PrintError("Ожидался идентификатор.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»СЃСЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ.", sc->GetLine() + 1, sc->GetUKfromStartString());
 	
-	string nameident = lexem; //Запоминаем имя.
+	string nameident = lexem; //Р—Р°РїРѕРјРёРЅР°РµРј РёРјСЏ.
 
 	int uk = sc->GetUK();
 	int line = sc->GetLine();
 	type = sc->Scan(lexem);
 
-	int numDim = 0; //Считаем кол-во измерений.
+	int numDim = 0; //РЎС‡РёС‚Р°РµРј РєРѕР»-РІРѕ РёР·РјРµСЂРµРЅРёР№.
 
 	vector<int> dim;
 
-	//Скобки массива.
+	//РЎРєРѕР±РєРё РјР°СЃСЃРёРІР°.
 	while (type == TopenSquareBracket)
 	{
 		numDim++;
 
 		Node* node = Expression();
 
-		//Проверяем что возвращаемое значение типа INT.
+		//РџСЂРѕРІРµСЂСЏРµРј С‡С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµРјРѕРµ Р·РЅР°С‡РµРЅРёРµ С‚РёРїР° INT.
 		if (node->type != DataType::IINT)
-			root->PrintError("В скобках массива выражение неверного типа", nameident);
+			root->PrintError("Р’ СЃРєРѕР±РєР°С… РјР°СЃСЃРёРІР° РІС‹СЂР°Р¶РµРЅРёРµ РЅРµРІРµСЂРЅРѕРіРѕ С‚РёРїР°", nameident);
 
 		dim.push_back(node->value.dataAsInt);
 
 		type = sc->Scan(lexem);
 		if (type != TcloseSquareBracket)
-			PrintError("Ожидался символ ].", sc->GetLine() + 1, sc->GetUKfromStartString());
+			PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» ].", sc->GetLine() + 1, sc->GetUKfromStartString());
 		uk = sc->GetUK();
 		line = sc->GetLine();
 		type = sc->Scan(lexem);
@@ -490,7 +490,7 @@ Node* Diagram::Name() //Имя.
 	sc->PutUK(uk);
 	sc->PutLine(line);
 
-	//Проверяем наличие переменной или массива в дереве.
+	//РџСЂРѕРІРµСЂСЏРµРј РЅР°Р»РёС‡РёРµ РїРµСЂРµРјРµРЅРЅРѕР№ РёР»Рё РјР°СЃСЃРёРІР° РІ РґРµСЂРµРІРµ.
 	Node* node2 = root->SemGetVar(nameident, numDim, dim)->GetNode();
 
 	Node* result = new  Node();
@@ -532,7 +532,7 @@ Node* Diagram::Name() //Имя.
 	return result;
 }
 
-Node* Diagram::Expression() //Выражение.
+Node* Diagram::Expression() //Р’С‹СЂР°Р¶РµРЅРёРµ.
 {
 	int type;
 	string lexem = "";
@@ -550,13 +550,13 @@ Node* Diagram::Expression() //Выражение.
 		uk = sc->GetUK();
 		line = sc->GetLine();
 
-		//Проверка типов.
+		//РџСЂРѕРІРµСЂРєР° С‚РёРїРѕРІ.
 		if (node->type != node2->type)
 		{
-			root->PrintError("Не соответствует типы", node->lexem);
+			root->PrintError("РќРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С‚РёРїС‹", node->lexem);
 		}
 		else
-		//Выполнение операций неравенства и равенства.
+		//Р’С‹РїРѕР»РЅРµРЅРёРµ РѕРїРµСЂР°С†РёР№ РЅРµСЂР°РІРµРЅСЃС‚РІР° Рё СЂР°РІРµРЅСЃС‚РІР°.
 		{
 			if (operation == Tuneq)
 			{
@@ -588,7 +588,7 @@ Node* Diagram::Expression() //Выражение.
 	return node;
 }
 
-Node* Diagram::Inequality() //Неравенство.
+Node* Diagram::Inequality() //РќРµСЂР°РІРµРЅСЃС‚РІРѕ.
 {
 	int type;
 	string lexem = "";
@@ -606,16 +606,16 @@ Node* Diagram::Inequality() //Неравенство.
 		uk = sc->GetUK();
 		line = sc->GetLine();
 
-		//Проверка типов.
+		//РџСЂРѕРІРµСЂРєР° С‚РёРїРѕРІ.
 		if (node->type != DataType::IINT || node2->type != DataType::IINT)
 		{
 			if (node->type != DataType::IINT)
-				root->PrintError("Не соответствует типу int", node->lexem);
+				root->PrintError("РќРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С‚РёРїСѓ int", node->lexem);
 			else
-				root->PrintError("Не соответствует типу int", node2->lexem);
+				root->PrintError("РќРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С‚РёРїСѓ int", node2->lexem);
 		}
 		else
-			//Выполнение операций меньше, больше, больше и равно, меньше и равно.
+			//Р’С‹РїРѕР»РЅРµРЅРёРµ РѕРїРµСЂР°С†РёР№ РјРµРЅСЊС€Рµ, Р±РѕР»СЊС€Рµ, Р±РѕР»СЊС€Рµ Рё СЂР°РІРЅРѕ, РјРµРЅСЊС€Рµ Рё СЂР°РІРЅРѕ.
 		{
 			if (operation == Tless)
 			{
@@ -645,7 +645,7 @@ Node* Diagram::Inequality() //Неравенство.
 	return node;
 }
 
-Node* Diagram::Addendum() //Слагаемое.
+Node* Diagram::Addendum() //РЎР»Р°РіР°РµРјРѕРµ.
 {
 	int type;
 	string lexem = "";
@@ -663,16 +663,16 @@ Node* Diagram::Addendum() //Слагаемое.
 		uk = sc->GetUK();
 		line = sc->GetLine();
 
-		//Проверка типов.
+		//РџСЂРѕРІРµСЂРєР° С‚РёРїРѕРІ.
 		if (node->type != DataType::IINT || node2->type != DataType::IINT)
 		{
 			if (node->type != DataType::IINT)
-				root->PrintError("Не соответствует типу int", node->lexem);
+				root->PrintError("РќРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С‚РёРїСѓ int", node->lexem);
 			else
-				root->PrintError("Не соответствует типу int", node2->lexem);
+				root->PrintError("РќРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С‚РёРїСѓ int", node2->lexem);
 		}
 		else
-			//Выполнение операций плюс и минус.
+			//Р’С‹РїРѕР»РЅРµРЅРёРµ РѕРїРµСЂР°С†РёР№ РїР»СЋСЃ Рё РјРёРЅСѓСЃ.
 		{
 			if (operation == Tminus)
 			{
@@ -694,7 +694,7 @@ Node* Diagram::Addendum() //Слагаемое.
 	return node;
 }
 
-Node* Diagram::Multiplier() //Множитель.
+Node* Diagram::Multiplier() //РњРЅРѕР¶РёС‚РµР»СЊ.
 {
 	int type;
 	string lexem = "";
@@ -712,16 +712,16 @@ Node* Diagram::Multiplier() //Множитель.
 		uk = sc->GetUK();
 		line = sc->GetLine();
 
-		//Проверка типов.
+		//РџСЂРѕРІРµСЂРєР° С‚РёРїРѕРІ.
 		if (node->type != DataType::IINT || node2->type != DataType::IINT)
 		{
 			if (node->type != DataType::IINT)
-				root->PrintError("Не соответствует типу int", node->lexem);
+				root->PrintError("РќРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С‚РёРїСѓ int", node->lexem);
 			else
-				root->PrintError("Не соответствует типу int", node2->lexem);
+				root->PrintError("РќРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С‚РёРїСѓ int", node2->lexem);
 		}
 		else
-			//Выполнение операций умножить, делить и остаток.
+			//Р’С‹РїРѕР»РЅРµРЅРёРµ РѕРїРµСЂР°С†РёР№ СѓРјРЅРѕР¶РёС‚СЊ, РґРµР»РёС‚СЊ Рё РѕСЃС‚Р°С‚РѕРє.
 		{
 			if (operation == Tremain)
 			{
@@ -747,7 +747,7 @@ Node* Diagram::Multiplier() //Множитель.
 	return node;
 }
 
-Node* Diagram::Prefix() //Префикс.
+Node* Diagram::Prefix() //РџСЂРµС„РёРєСЃ.
 {
 	int type;
 	string lexem = "";
@@ -766,11 +766,11 @@ Node* Diagram::Prefix() //Префикс.
 	if (type == Tplus || type == Tincrement || type == Tminus || type == Tdecrement)
 	{
 		if (node->typenode == TypeNode::CCONSTANT)
-			PrintError("Ожидался идентификатор", uk, line);
+			PrintError("РћР¶РёРґР°Р»СЃСЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ", uk, line);
 		
 		if (node->type != DataType::IINT)
 		{
-			root->PrintError("Не соответствует типу int", node->lexem);
+			root->PrintError("РќРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С‚РёРїСѓ int", node->lexem);
 		}
 		else
 		{
@@ -827,7 +827,7 @@ Node* Diagram::Prefix() //Префикс.
 	return node;
 }
 
-Node* Diagram::Postfix() //Постфикс.
+Node* Diagram::Postfix() //РџРѕСЃС‚С„РёРєСЃ.
 {
 	int type;
 	string lexem = "";
@@ -847,11 +847,11 @@ Node* Diagram::Postfix() //Постфикс.
 	else 
 	{
 		if (node->typenode == TypeNode::CCONSTANT)
-			PrintError("Ожидался идентификатор", uk, line);
+			PrintError("РћР¶РёРґР°Р»СЃСЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ", uk, line);
 
 		if (node->type != DataType::IINT)
 		{
-			root->PrintError("Не соответствует типу int", node->lexem);
+			root->PrintError("РќРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С‚РёРїСѓ int", node->lexem);
 		}
 		else
 		{
@@ -891,7 +891,7 @@ Node* Diagram::Postfix() //Постфикс.
 	return node;
 }
 
-Node* Diagram::ElementaryExpression() //Элементарное выражение.
+Node* Diagram::ElementaryExpression() //Р­Р»РµРјРµРЅС‚Р°СЂРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ.
 {
 	Node* node;
 
@@ -902,15 +902,15 @@ Node* Diagram::ElementaryExpression() //Элементарное выражение.
 	int line = sc->GetLine();
 	type = sc->Scan(lexem);
 
-	//Выражение.
+	//Р’С‹СЂР°Р¶РµРЅРёРµ.
 	if (type == TopenBracket)
 	{
 		node = Expression();
 		type = sc->Scan(lexem);
 		if (type != TcloseBracket)
-			PrintError("Ожидался символ ).", sc->GetLine() + 1, sc->GetUKfromStartString());
+			PrintError("РћР¶РёРґР°Р»СЃСЏ СЃРёРјРІРѕР» ).", sc->GetLine() + 1, sc->GetUKfromStartString());
 	}
-	//Константа.
+	//РљРѕРЅСЃС‚Р°РЅС‚Р°.
 	else if (type >= TconstInt10 && type <= TconstChar)
 	{
 		node = new Node();
@@ -925,7 +925,7 @@ Node* Diagram::ElementaryExpression() //Элементарное выражение.
 		node->type = DataType::IINT;
 		node->value.dataAsInt = number;
 	}
-	//Имя.
+	//РРјСЏ.
 	else if (type != Ttrue && type != Tfalse)
 	{
 		sc->PutUK(uk);
@@ -961,7 +961,7 @@ Node* Diagram::ElementaryExpression() //Элементарное выражение.
 	return node;
 }
 
-int Diagram::Constant() //Константа.
+int Diagram::Constant() //РљРѕРЅСЃС‚Р°РЅС‚Р°.
 {
 	int type;
 	string lexem = "";
@@ -971,7 +971,7 @@ int Diagram::Constant() //Константа.
 	if (type != TconstInt10 && type != TconstInt8 &&
 		type != TconstInt16 && type != TconstInt2 &&
 		type != TconstChar)
-		PrintError("Ожидалось константа.", sc->GetLine() + 1, sc->GetUKfromStartString());
+		PrintError("РћР¶РёРґР°Р»РѕСЃСЊ РєРѕРЅСЃС‚Р°РЅС‚Р°.", sc->GetLine() + 1, sc->GetUKfromStartString());
 
 	if (type == TconstInt10)
 		return stoi(lexem);
@@ -992,6 +992,6 @@ int Diagram::Constant() //Константа.
 void Diagram::PrintError(string description, int line, int symbol)
 {
 	cout << description << endl;
-	cout << "Строка: " << line << ", позиция: " << symbol << "." << endl;
+	cout << "РЎС‚СЂРѕРєР°: " << line << ", РїРѕР·РёС†РёСЏ: " << symbol << "." << endl;
 	throw "Error!";
 }

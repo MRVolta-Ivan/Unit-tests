@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "defs.h"
 #include <string>
 #include <iostream>
@@ -35,13 +35,13 @@ public:
 
 	TypeNode typenode;
 
-	string lexem; //Идентификатор.
-	DataType type; //Тип переменной.
-	DataValue value; //Значение
-	bool isField; //Это поле/свойство класса.
-	bool isInitialization; //Переменная инициализированна.
-	int numberDimension; //Число размерностей массива.
-	vector<int> dimension; //Размерности массива.
+	string lexem; //РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ.
+	DataType type; //РўРёРї РїРµСЂРµРјРµРЅРЅРѕР№.
+	DataValue value; //Р—РЅР°С‡РµРЅРёРµ
+	bool isField; //Р­С‚Рѕ РїРѕР»Рµ/СЃРІРѕР№СЃС‚РІРѕ РєР»Р°СЃСЃР°.
+	bool isInitialization; //РџРµСЂРµРјРµРЅРЅР°СЏ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅРЅР°.
+	int numberDimension; //Р§РёСЃР»Рѕ СЂР°Р·РјРµСЂРЅРѕСЃС‚РµР№ РјР°СЃСЃРёРІР°.
+	vector<int> dimension; //Р Р°Р·РјРµСЂРЅРѕСЃС‚Рё РјР°СЃСЃРёРІР°.
 };
 
 class Tree
@@ -51,7 +51,7 @@ private:
 	Tree *up;
 	Tree *left;
 	Tree *right;
-	static Tree* cur; //Текущий элемент дерева.
+	static Tree* cur; //РўРµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚ РґРµСЂРµРІР°.
 public:
 	Tree(Tree *u, Tree *l, Tree *r, Node *data);
 	Tree();
@@ -71,25 +71,25 @@ public:
 	void PrintError(string description, string lex);
 	void PrintError(string description, string lex, DataType typeData, int number);
 
-	//Занести идентификатор в дерево.
+	//Р—Р°РЅРµСЃС‚Рё РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РІ РґРµСЂРµРІРѕ.
 	Tree* SemInclude(string lex, int intype, DataValue _value, bool field, bool init, int numDim, vector<int> _dimension);
-	//Создать пустой узел.
+	//РЎРѕР·РґР°С‚СЊ РїСѓСЃС‚РѕР№ СѓР·РµР».
 	Tree* SemInclude();
-	//Найти в дереве идентификатор.
+	//РќР°Р№С‚Рё РІ РґРµСЂРµРІРµ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ.
 	Tree* SemGetVar(string lex, int numD);
 	Tree* SemGetVar(string lex, int numD, vector<int> dim);
-	//Установить признак инициализации и проверить тип данных.
+	//РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РїСЂРёР·РЅР°Рє РёРЅРёС†РёР°Р»РёР·Р°С†РёРё Рё РїСЂРѕРІРµСЂРёС‚СЊ С‚РёРї РґР°РЅРЅС‹С….
 	void SetInit(Node* _node);
-	//Установить число размерностей.
+	//РЈСЃС‚Р°РЅРѕРІРёС‚СЊ С‡РёСЃР»Рѕ СЂР°Р·РјРµСЂРЅРѕСЃС‚РµР№.
 	void SetNumDimension(int numDim);
-	//Установить размерности.
+	//РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СЂР°Р·РјРµСЂРЅРѕСЃС‚Рё.
 	void SetDimension(vector<int> dim);
-	//Проверка идентификатора на повторное объявление.
+	//РџСЂРѕРІРµСЂРєР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР° РЅР° РїРѕРІС‚РѕСЂРЅРѕРµ РѕР±СЉСЏРІР»РµРЅРёРµ.
 	bool DupControl(Tree* from, string lex, bool field);
 
-	//Установить текущий узел дерева.
+	//РЈСЃС‚Р°РЅРѕРІРёС‚СЊ С‚РµРєСѓС‰РёР№ СѓР·РµР» РґРµСЂРµРІР°.
 	void SetCur(Tree* t);
-	//Получить текущий узел дерева.
+	//РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСѓС‰РёР№ СѓР·РµР» РґРµСЂРµРІР°.
 	Tree* GetCur();
 
 	Node* GetNode();

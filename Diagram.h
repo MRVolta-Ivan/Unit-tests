@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "Scaner.h"
 #include "Semant.h"
 
@@ -9,30 +9,30 @@ private:
 	Tree* root;
 
 public:
-	void Function(); //Функция.
-	void CompoundOperator(); //Составной оператор.
-	void OneDescription(bool field); //Одно описание.
-	int TypeData(); //Тип данных.
-	void Variable(int typeData, bool field); //Переменная.
-	vector<int> ArraySize(); //Размер массива.
-	void Operator(); //Оператор.
-	void Assignment(); //Присваивание.
+	void Function(); //Р¤СѓРЅРєС†РёСЏ.
+	void CompoundOperator(); //РЎРѕСЃС‚Р°РІРЅРѕР№ РѕРїРµСЂР°С‚РѕСЂ.
+	void OneDescription(bool field); //РћРґРЅРѕ РѕРїРёСЃР°РЅРёРµ.
+	int TypeData(); //РўРёРї РґР°РЅРЅС‹С….
+	void Variable(int typeData, bool field); //РџРµСЂРµРјРµРЅРЅР°СЏ.
+	vector<int> ArraySize(); //Р Р°Р·РјРµСЂ РјР°СЃСЃРёРІР°.
+	void Operator(); //РћРїРµСЂР°С‚РѕСЂ.
+	void Assignment(); //РџСЂРёСЃРІР°РёРІР°РЅРёРµ.
 	void Switch(); //Switch.
 	void Case(); //Case.
-	void MultipleOperators(); //Несколько операторов.
-	Node* Name(); //Имя.
-	Node* Expression(); //Выражение.
-	Node* Inequality(); //Неравенство.
-	Node* Addendum(); //Слагамое.
-	Node* Multiplier(); //Множитель.
-	Node* Prefix(); //префикс.
-	Node* Postfix(); //Постфикс.
-	Node* ElementaryExpression(); //Элементарное выражение.
-	int Constant(); //Константа.
+	void MultipleOperators(); //РќРµСЃРєРѕР»СЊРєРѕ РѕРїРµСЂР°С‚РѕСЂРѕРІ.
+	Node* Name(); //РРјСЏ.
+	Node* Expression(); //Р’С‹СЂР°Р¶РµРЅРёРµ.
+	Node* Inequality(); //РќРµСЂР°РІРµРЅСЃС‚РІРѕ.
+	Node* Addendum(); //РЎР»Р°РіР°РјРѕРµ.
+	Node* Multiplier(); //РњРЅРѕР¶РёС‚РµР»СЊ.
+	Node* Prefix(); //РїСЂРµС„РёРєСЃ.
+	Node* Postfix(); //РџРѕСЃС‚С„РёРєСЃ.
+	Node* ElementaryExpression(); //Р­Р»РµРјРµРЅС‚Р°СЂРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ.
+	int Constant(); //РљРѕРЅСЃС‚Р°РЅС‚Р°.
 
 	Diagram(Scaner *s, Tree* tree);
 	~Diagram();
-	void Program(); //Программа.
+	void Program(); //РџСЂРѕРіСЂР°РјРјР°.
 	void PrintError(string description, int line, int symbol);
 
 	void SetText(string text) { sc->SetText(text); }

@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -10,10 +10,10 @@ using namespace std;
 class Scaner
 {
 private:
-	string text; //Сканирующий текст.
-	int count_string = 0; //Текущая строка.
-	int uk_start_string = 0; //Указатель начала текущей строки.
-	int uk = 0; //Указатель на положение в тексте.
+	string text; //РЎРєР°РЅРёСЂСѓСЋС‰РёР№ С‚РµРєСЃС‚.
+	int count_string = 0; //РўРµРєСѓС‰Р°СЏ СЃС‚СЂРѕРєР°.
+	int uk_start_string = 0; //РЈРєР°Р·Р°С‚РµР»СЊ РЅР°С‡Р°Р»Р° С‚РµРєСѓС‰РµР№ СЃС‚СЂРѕРєРё.
+	int uk = 0; //РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РїРѕР»РѕР¶РµРЅРёРµ РІ С‚РµРєСЃС‚Рµ.
 
 	 map<string, int> keywords = {
 	{"int", Tint},
@@ -32,24 +32,24 @@ private:
 	{"default", Tdefault},
 	{"break", Tbreak},
 	{"true", Ttrue},
-	{"false", Tfalse}}; //Ключевые слова.
+	{"false", Tfalse}}; //РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°.
 
-	inline bool IsIdent(char symbol); //Принадлежит ли символ буквам и _.
-	inline bool IsNumber10(char symbol); //Принадлижит ли символ цифрам 10 с/с.
-	inline bool IsNumber16(char symbol); //Принадлежит ли символ цифрам 16 с/с.
-	inline bool IsNumber8(char symbol); //Принадлежит ли символ  цифрам 8 с/с.
-	inline bool IsNumber2(char symbol); //Принадлежит ли символ цифрам 2 с/с.
+	inline bool IsIdent(char symbol); //РџСЂРёРЅР°РґР»РµР¶РёС‚ Р»Рё СЃРёРјРІРѕР» Р±СѓРєРІР°Рј Рё _.
+	inline bool IsNumber10(char symbol); //РџСЂРёРЅР°РґР»РёР¶РёС‚ Р»Рё СЃРёРјРІРѕР» С†РёС„СЂР°Рј 10 СЃ/СЃ.
+	inline bool IsNumber16(char symbol); //РџСЂРёРЅР°РґР»РµР¶РёС‚ Р»Рё СЃРёРјРІРѕР» С†РёС„СЂР°Рј 16 СЃ/СЃ.
+	inline bool IsNumber8(char symbol); //РџСЂРёРЅР°РґР»РµР¶РёС‚ Р»Рё СЃРёРјРІРѕР»  С†РёС„СЂР°Рј 8 СЃ/СЃ.
+	inline bool IsNumber2(char symbol); //РџСЂРёРЅР°РґР»РµР¶РёС‚ Р»Рё СЃРёРјРІРѕР» С†РёС„СЂР°Рј 2 СЃ/СЃ.
 
 public:
 	void Reset();
-	void PutUK(int i); //Установить указатель.
-	int GetUK(); //Получить положение указателя.
+	void PutUK(int i); //РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СѓРєР°Р·Р°С‚РµР»СЊ.
+	int GetUK(); //РџРѕР»СѓС‡РёС‚СЊ РїРѕР»РѕР¶РµРЅРёРµ СѓРєР°Р·Р°С‚РµР»СЏ.
 	int GetUKfromStartString();
 	int GetLine();
 	void PutLine(int line);
-	void PrintError(int i); //Напечатать ошибку.
-	int Scan(string &l); //Сканированние текста.
-	void GetData(string file_name); //Прочитать текст для сканера из файла.
+	void PrintError(int i); //РќР°РїРµС‡Р°С‚Р°С‚СЊ РѕС€РёР±РєСѓ.
+	int Scan(string &l); //РЎРєР°РЅРёСЂРѕРІР°РЅРЅРёРµ С‚РµРєСЃС‚Р°.
+	void GetData(string file_name); //РџСЂРѕС‡РёС‚Р°С‚СЊ С‚РµРєСЃС‚ РґР»СЏ СЃРєР°РЅРµСЂР° РёР· С„Р°Р№Р»Р°.
 
 	void SetText(string _text) { text = _text; uk = 0; count_string = 0; }
 };

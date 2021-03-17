@@ -1,4 +1,4 @@
-#include "Semant.h"
+ï»¿#include "Semant.h"
 
 Tree* Tree::cur = nullptr;
 
@@ -91,11 +91,11 @@ Tree * Tree::FindRightLeft(string lex)
 
 void Tree::Print()
 {
-	cout << "Âåðøèíà ñ äàííûìè " << node->lexem << " ----->" << endl;
+	cout << "Ð’ÐµÑ€ÑˆÐ¸Ð½Ð° Ñ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸ " << node->lexem << " ----->" << endl;
 	if (left != nullptr)
-		cout << "	ñëåâà äàííûå " << left->node->lexem << endl;
+		cout << "	ÑÐ»ÐµÐ²Ð° Ð´Ð°Ð½Ð½Ñ‹Ðµ " << left->node->lexem << endl;
 	if (right != nullptr)
-		cout << "	ñïðàâà äàííûå " << right->node->lexem << endl;
+		cout << "	ÑÐ¿Ñ€Ð°Ð²Ð° Ð´Ð°Ð½Ð½Ñ‹Ðµ " << right->node->lexem << endl;
 	if (left != nullptr) left->Print();
 	if (right != nullptr) right->Print();
 }
@@ -110,7 +110,7 @@ void Tree::PrintDetail()
 		else
 			typeStr = "boolean";
 
-		cout << "Òèï: " << typeStr << ", èäåíòèôèêàòîð: " << node->lexem;
+		cout << "Ð¢Ð¸Ð¿: " << typeStr << ", Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€: " << node->lexem;
 		if (node->numberDimension > 0)
 		{
 			int all = 1;
@@ -118,11 +118,11 @@ void Tree::PrintDetail()
 			for (int i = 0; i < node->dimension.size(); i++)
 				all *= node->dimension[i];
 
-			cout << " - ìàññèâ, ";
+			cout << " - Ð¼Ð°ÑÑÐ¸Ð², ";
 			if (node->type == DataType::IINT)
 			{
-				cout << "àäðåñ ìàññèâà = " << node->value.addrAsInt;
-				cout << endl << "Çíà÷åíèÿ çàïèñàííûå â ìàññèâå: | ";
+				cout << "Ð°Ð´Ñ€ÐµÑ Ð¼Ð°ÑÑÐ¸Ð²Ð° = " << node->value.addrAsInt;
+				cout << endl << "Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ Ð·Ð°Ð¿Ð¸ÑÐ°Ð½Ð½Ñ‹Ðµ Ð² Ð¼Ð°ÑÑÐ¸Ð²Ðµ: | ";
 				for (int i = 0; i < all; i++)
 				{
 					cout << node->value.addrAsInt[i] << " | ";
@@ -131,8 +131,8 @@ void Tree::PrintDetail()
 			}
 			else
 			{
-				cout << "àäðåñ ìàññèâà = " << node->value.addrAsBoolean;
-				cout << endl << "Çíà÷åíèÿ çàïèñàííûå â ìàññèâå: | ";
+				cout << "Ð°Ð´Ñ€ÐµÑ Ð¼Ð°ÑÑÐ¸Ð²Ð° = " << node->value.addrAsBoolean;
+				cout << endl << "Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ Ð·Ð°Ð¿Ð¸ÑÐ°Ð½Ð½Ñ‹Ðµ Ð² Ð¼Ð°ÑÑÐ¸Ð²Ðµ: | ";
 				for (int i = 0; i < all; i++)
 				{
 					if (node->value.addrAsBoolean[i])
@@ -147,14 +147,14 @@ void Tree::PrintDetail()
 		}
 		else
 		{
-			cout << " - ïåðåìåííàÿ, ";
+			cout << " - Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ, ";
 			if (node->type == DataType::IINT)
-				cout << "çíà÷åíèå = " << node->value.dataAsInt;
+				cout << "Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ = " << node->value.dataAsInt;
 			else
 				if (node->value.dataAsBoolean)
-					cout << "çíà÷åíèå = true";
+					cout << "Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ = true";
 				else
-					cout << "çíà÷åíèå = false";
+					cout << "Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ = false";
 		}
 		cout << endl;
 	}
@@ -165,7 +165,7 @@ void Tree::PrintDetail()
 
 void Tree::PrintError(string description, string lex)
 {
-	cout << "Îøèáêà! " << description << ", èäåíòèôèêàòîð: " << lex << "." << endl;
+	cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << description << ", Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€: " << lex << "." << endl;
 	throw "Error!";
 }
 
@@ -185,14 +185,14 @@ void Tree::PrintError(string description, string lex, DataType typeData, int num
 	for (int i = 0; i < number; i++)
 		errorString += "[]";
 
-	cout << "Îøèáêà! " << errorString << ", èäåíòèôèêàòîð: " << lex << "." << endl;
+	cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << errorString << ", Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€: " << lex << "." << endl;
 	throw "Error!";
 }
 
 Tree * Tree::SemInclude(string lex, int intype, DataValue _value, bool field, bool init, int numDim, vector<int> _dimension)
 {
 	if (DupControl(cur, lex, field))
-		PrintError("Ïîâòîðíîå îïèñàíèå", lex);
+		PrintError("ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð½Ð¾Ðµ Ð¾Ð¿Ð¸ÑÐ°Ð½Ð¸Ðµ", lex);
 
 	DataType _type;
 
@@ -222,10 +222,10 @@ Tree * Tree::SemGetVar(string lex, int numD)
 	Tree* v = FindUp(cur, lex);
 
 	if (v == nullptr)
-		PrintError("Îòñóòñòâóåò îïèñàíèå èäåíòèôèêàòîðà", lex);
+		PrintError("ÐžÑ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ð¾Ð¿Ð¸ÑÐ°Ð½Ð¸Ðµ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð°", lex);
 
 	if (v->node->numberDimension != numD)
-		PrintError("Íå ñîîòâåòñòâóåò òèïó", v->node->lexem, v->node->type, v->node->numberDimension);
+		PrintError("ÐÐµ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ñ‚Ð¸Ð¿Ñƒ", v->node->lexem, v->node->type, v->node->numberDimension);
 
 	return v;
 }
@@ -235,15 +235,15 @@ Tree * Tree::SemGetVar(string lex, int numD, vector<int> dim)
 	Tree* v = FindUp(cur, lex);
 
 	if (v == nullptr)
-		PrintError("Îòñóòñòâóåò îïèñàíèå èäåíòèôèêàòîðà", lex);
+		PrintError("ÐžÑ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ð¾Ð¿Ð¸ÑÐ°Ð½Ð¸Ðµ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð°", lex);
 
 	if (v->node->numberDimension != numD)
-		PrintError("Íå ñîîòâåòñòâóåò òèïó", v->node->lexem, v->node->type, v->node->numberDimension);
+		PrintError("ÐÐµ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ñ‚Ð¸Ð¿Ñƒ", v->node->lexem, v->node->type, v->node->numberDimension);
 
 	for (int i = 0; i < dim.size(); i++)
 	{
 		if (dim[i] >= v->node->dimension[i])
-			PrintError("Âûõîä çà ïðåäåëû ìàññèâà", v->node->lexem);
+			PrintError("Ð’Ñ‹Ñ…Ð¾Ð´ Ð·Ð° Ð¿Ñ€ÐµÐ´ÐµÐ»Ñ‹ Ð¼Ð°ÑÑÐ¸Ð²Ð°", v->node->lexem);
 	}
 
 	return v;
@@ -253,7 +253,7 @@ void Tree::SetInit(Node* _node)
 {
 	if (cur->node->type != _node->type)
 	{
-		PrintError("Îæèäàëñÿ òèï ", cur->node->lexem, cur->node->type, 0);
+		PrintError("ÐžÐ¶Ð¸Ð´Ð°Ð»ÑÑ Ñ‚Ð¸Ð¿ ", cur->node->lexem, cur->node->type, 0);
 	}
 	cur->node->isInitialization = true;
 	cur->node->value = _node->value;
@@ -267,7 +267,7 @@ void Tree::SetNumDimension(int numDim)
 void Tree::SetDimension(vector<int> dim)
 {
 	if (cur->node->numberDimension != dim.size())
-		PrintError("Îæèäàëñÿ òèï ", cur->node->lexem, cur->node->type, cur->node->numberDimension);
+		PrintError("ÐžÐ¶Ð¸Ð´Ð°Ð»ÑÑ Ñ‚Ð¸Ð¿ ", cur->node->lexem, cur->node->type, cur->node->numberDimension);
 	cur->node->dimension = dim;
 }
 
